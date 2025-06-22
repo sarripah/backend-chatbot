@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
+import { Document } from "langchain/document";
+import { htmlToText } from "html-to-text";
+import { saveDocument } from "../utils/saveDocument.js";
+import authenticateToken from "../middleware/authMiddleware.js";
+
 const router = express.Router();
-const { Document } = require("langchain/document");
-const { htmlToText } = require("html-to-text");
-const { saveDocument } = require("../utils/saveDocument");
-const authenticateToken = require("../middleware/authMiddleware"); // ⬅️ Tambahkan middleware
 
 // 🔍 Ambil semua dokumen (hanya untuk admin)
 router.get("/", authenticateToken, (req, res) => {
@@ -91,4 +92,4 @@ router.delete("/:id", authenticateToken, (req, res) => {
   }
 });
 
-module.exports = router;
+export default router ;

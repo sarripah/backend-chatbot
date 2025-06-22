@@ -1,5 +1,5 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
+import express from "express";
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -20,4 +20,4 @@ router.post("/", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router ;

@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import { htmlToText } from "html-to-text";
+import { ChatGroq } from "@langchain/groq";
+
 const router = express.Router();
-const { htmlToText } = require("html-to-text");
-const { ChatGroq } = require("@langchain/groq");
 
 /**
  * Fungsi cosine similarity
@@ -86,4 +87,4 @@ ${context}
   }
 });
 
-module.exports = router;
+export default router ;

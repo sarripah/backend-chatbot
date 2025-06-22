@@ -1,15 +1,17 @@
-require("dotenv/config");
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import path from "path";
+import { HuggingFaceTransformersEmbeddings } from "@langchain/community/embeddings/hf_transformers";
+import Database from "better-sqlite3";
+import documentsRoutes from "./routes/documents.js";
+import queryRoutes from "./routes/query.js";
+import feedbackRoutes from "./routes/feedback.js";
+import loginRoutes from "./routes/login.js";
 
-const { HuggingFaceTransformersEmbeddings } = require("@langchain/community/embeddings/hf_transformers");
-const Database = require("better-sqlite3");
+import { fileURLToPath } from "url";
 
-const documentsRoutes = require("./routes/documents");
-const queryRoutes = require("./routes/query");
-const feedbackRoutes = require("./routes/feedback");
-const loginRoutes = require("./routes/login");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DB_PATH = path.resolve(__dirname, "db", "chatbot.sqlite3");
 
@@ -65,7 +67,4 @@ async function initialize() {
   app.use("/login", loginRoutes);
 }
 
-module.exports = {
-  app,
-  initialize,
-};
+export { app, initialize };

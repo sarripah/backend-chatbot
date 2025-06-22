@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
+import  authenticateToken  from "../middleware/authMiddleware.js";
 const router = express.Router();
-const authenticateToken = require("../middleware/authMiddleware"); // ⬅️ tambahkan ini
 
 // GET semua feedback (admin only)
 router.get("/", authenticateToken, (req, res) => {
@@ -66,4 +66,4 @@ router.delete("/:id", authenticateToken, (req, res) => {
   res.json({ message: "Feedback berhasil dihapus!" });
 });
 
-module.exports = router;
+export default router ;

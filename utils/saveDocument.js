@@ -1,4 +1,4 @@
-const { htmlToText } = require("html-to-text");
+import { htmlToText } from "html-to-text";
 
 async function saveDocument(db, doc, embedder) {
   const combinedText = `${doc.metadata.judul}\n${htmlToText(doc.pageContent, {
@@ -15,6 +15,4 @@ async function saveDocument(db, doc, embedder) {
   return info.lastInsertRowid;
 }
 
-module.exports = {
-  saveDocument,
-};
+export { saveDocument };
