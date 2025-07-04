@@ -17,7 +17,7 @@ const DB_PATH = path.resolve(__dirname, "db", "chatbot.sqlite3");
 
 const app = express();
 app.use(cors({
-  origin: 'https://frontend-chatbot-ten.vercel.app', // ganti dengan domain frontend
+  origin: ['http://localhost:5173', 'https://frontend-chatbot-ten.vercel.app'], // ganti dengan domain frontend
   credentials: true,
 }));
 app.use(express.json());

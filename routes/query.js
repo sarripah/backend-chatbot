@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
 
     // 5. Siapkan dan panggil LLM Groq
     const llm = new ChatGroq({
-      model: "llama3-70b-8192",
+      model: "llama-3.3-70b-versatile",
       apiKey: process.env.GROQ_API_KEY,
       temperature: 0.2,
     });
@@ -62,7 +62,9 @@ router.post("/", async (req, res) => {
       {
         role: "system",
         content: `
-Kamu adalah asisten cerdas untuk Unit Layanan Terpadu (ULT) UPN "Veteran" Jakarta. Jawab pertanyaan berikut berdasarkan konteks dokumen yang diberikan di bawah ini:
+Kamu adalah asisten cerdas untuk Unit Layanan Terpadu (ULT) 
+UPN "Veteran" Jakarta. Jawab pertanyaan berikut berdasarkan 
+konteks dokumen yang diberikan di bawah ini:
 
 ${context}
 
@@ -79,7 +81,8 @@ ${context}
       },
     ]);
 
-    res.json({ response: response.content });
+  res.json({ response: response.content });
+
 
   } catch (err) {
     console.error(err);

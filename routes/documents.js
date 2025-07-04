@@ -8,7 +8,7 @@ const router = express.Router();
 
 // 🔍 Ambil semua dokumen (hanya untuk admin)
 router.get("/", authenticateToken, (req, res) => {
-  const stmt = req.db.prepare("SELECT id, judul, konten FROM documents");
+  const stmt = req.db.prepare("SELECT id, judul, konten FROM documents ORDER BY id DESC");
   const rows = stmt.all();
   res.json(rows);
 });
